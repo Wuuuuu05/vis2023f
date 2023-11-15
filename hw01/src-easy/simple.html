@@ -1,0 +1,184 @@
+<!-- https://www.geeksforgeeks.org/how-to-export-html-table-to-csv-using-javascript/ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid blue;
+            margin: 10px auto;
+            padding: 1px 3px;
+        }
+        
+    </style>
+</head>
+ 
+<body>
+<!--     <center>
+        <h1 style="color:green">GeeksForGeeks</h1>
+        <h2>Table to CSV converter</h2>
+        <table border="1" cellspacing="0" cellpadding="10">
+            <tr>
+                <th>Name</th>
+                <th>age</th>
+                <th>place</th>
+            </tr>
+            <tr>
+                <td>Laxman</td>
+                <td>19</td>
+                <td>Hyderabad</td>
+            </tr>
+            <tr>
+                <td>Dhoni</td>
+                <td>22</td>
+                <td>Ranchi</td>
+            </tr>
+            <tr>
+                <td>Kohli</td>
+                <td>25</td>
+                <td>Delhi</td>
+            </tr>
+        </table> -->
+        <br><br>
+        <button type="button" onclick="tableToCSV()">
+            download CSV
+        </button>
+    </center>
+ 
+    <script type="text/javascript">
+
+
+// https://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript
+
+function createArray(length) {
+    var arr = new Array(length || 0),
+        i = length;
+
+    if (arguments.length > 1) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        while(i--) arr[length-1 - i] = createArray.apply(this, args);
+    }
+
+    return arr;
+}
+
+
+
+a1 = createArray(121, 15); 
+
+a1[0] = ['序號', '班級', '學號', '姓名', 'GitHub', '作業一', '作業二', '作業三', '作業四', '作業五', '作業六', '作業七', '作業八', '作業九', '作業十']
+
+for (var i = 1; i < a1.length; i++) {
+    a1[i][0] = i;
+
+    //隨機選擇班級
+    var classes = ['資工系', '資工所', '電資AI', '電資資安', '創新AI'];
+    var randomClass = getRandomElement(classes);
+    function getRandomElement(array) {
+        var randomIndex = Math.floor(Math.random() * array.length);
+        return array[randomIndex];
+    }
+    a1[i][1] = randomClass;
+
+    var studentIDPrefix = Math.random() < 0.5 ? '111' : '112';
+    var ClassCode;
+    if (randomClass === '資工系'){
+        ClassCode = '590';
+    }
+    else if (randomClass === '資工所'){
+        ClassCode = '598';
+    }
+    else if (randomClass === '電資AI'){
+        ClassCode = 'C52';
+    }
+    else if (randomClass === '電資資安'){
+        ClassCode = 'C53';
+    }
+    else if (randomClass === '創新AI'){
+        ClassCode = 'C71';
+    }
+
+    var studentIDSuffix = getRandomNumber(1, 999).toString().padStart(3, '0');
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    var fakeStudentID = studentIDPrefix + ClassCode + studentIDSuffix;
+    
+    a1[i][2] = fakeStudentID;
+    a1[i][3] = String.fromCharCode(Math.floor(Math.random() * 0x51ff + 0x4e00)) +
+               String.fromCharCode(Math.floor(Math.random() * 0x51ff + 0x4e00)) +
+               String.fromCharCode(Math.floor(Math.random() * 0x51ff + 0x4e00));
+    
+    a1[i][4] = (Math.random() + 1).toString(36).substring(2);
+
+    
+    for (var j = 5; j < a1[0].length; j++) {
+        a1[i][j] = Math.floor(Math.random() * 10);
+    }
+}
+
+//create a Table Object
+var table = document.createElement('table');
+//iterate over every array(row) 
+for (var i = 0; i < a1.length; i++) {
+//Insert a new row element into the table element
+  var row = table.insertRow();
+//Iterate over every index(cell) in each array(row)
+  for (var j = 0; j < a1[i].length; j++) {
+//While iterating over the index(cell)
+//insert a cell into the table element
+    var newCell = row.insertCell(j);
+//add text to the created cell element
+    newCell.textContent = a1[i][j];
+  }
+}
+//append the compiled table to the DOM
+document.body.appendChild(table);
+
+
+
+
+
+        function tableToCSV() {
+ 
+            // Variable to store the final csv data
+            var csv_data = '\uFEFF';
+            // table to csv
+            for (var i = 0; i < rows.length; i++) {
+                csv_data += a1[i].join(',') + '\n';
+            }
+            // Call this function to download csv file 
+            downloadCSVFile(csv_data);
+ 
+        }
+ 
+        function downloadCSVFile(csv_data) {
+ 
+            // Create CSV file object and feed
+            // our csv_data into it
+            CSVFile = new Blob([csv_data], {
+                type: "text/csv;charset=utf-8"
+            });
+ 
+            // Create to temporary link to initiate
+            // download process
+            var temp_link = document.createElement('a');
+ 
+            // Download csv file
+            temp_link.download = "data.csv";
+            var url = window.URL.createObjectURL(CSVFile);
+            temp_link.href = url;
+ 
+            // This link should not be displayed
+            temp_link.style.display = "none";
+            document.body.appendChild(temp_link);
+ 
+            // Automatically click the link to
+            // trigger download
+            temp_link.click();
+            document.body.removeChild(temp_link);
+        }
+    </script>
+</body>
+ 
+</html>
