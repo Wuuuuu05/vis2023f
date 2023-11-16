@@ -219,22 +219,22 @@
         </tr>
         <tr>
           <td rowspan="4" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1" checked="checked"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
           <td id='m1'>2</td>
           <td>Simple baseline - 產生 Dummy CSV 虛構成績表</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked="checked"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox2"></td>
           <td id='m2'>2</td>
           <td>Simple baseline - 繪製 v3 蘋果成績表</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked="checked"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked></td>
           <td id='m3'>2</td>
           <td>Medium baseline - 繪製 v7 蘋果成績表</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox4" checked="checked"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox4"></td>
           <td id='m4'>4</td>
           <td>Strong baseline - 繪製 v7 創新成績表，參考D3畫廊，修改範例，推出創新成績表</td>
         </tr>
@@ -279,7 +279,12 @@
   </div>
 
   <!-- ------------------------------------------------>
-
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+      <h4>Strong baseline - 繪製 v7 創新成績表，參考D3畫廊，修改範例，推出創新成績表</h4>
+    </div>
+  </div>
+  
   <!-- ------------------------------------------------>
 
 
@@ -302,28 +307,20 @@
   update();
   
   function update(){
-
     var score = 0;
-
     if (d3.select("#myCheckbox1").property("checked")){
       score += parseInt(d3.select('#m1').html());
     }
-
     if (d3.select("#myCheckbox2").property("checked")){
       score += parseInt(d3.select('#m2').html());   
     }
-
     if (d3.select("#myCheckbox3").property("checked")){
       score += parseInt(d3.select('#m3').html());   
     }
-
-    if (d3.select("#myCheckbox4").property("checked")){
-      score += parseInt(d3.select('#m4').html());   
-    }
-
     d3.select("#myTotal").html(score);    
   }
 </script>
+
 
 </body>
 </html>
