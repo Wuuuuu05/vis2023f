@@ -20,7 +20,7 @@ function _chart(d3,data)
   const marginTop = 20;
   const marginRight = 10;
   const marginBottom = 20;
-  const marginLeft = 10;
+  const marginLeft = 20;
 
   // Transform the data to make it suitable for stacking.
   const stackedData = d3.stack()
