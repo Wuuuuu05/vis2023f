@@ -14,6 +14,10 @@ function _constellations(data){return(
 data.map(item => item.Constellation)
 )}
 
+function _constellation_c(){return(
+["牡羊座", "金牛座", "雙子座", "巨蟹座", "獅子座", "處女座", "天秤座", "天蠍座", "射手座", "摩羯座" ,"水瓶座", "雙魚座"]
+)}
+
 function _5(yCounts,constellations,data)
 {
   yCounts.length = 0; //將yCounts清空
@@ -33,11 +37,6 @@ function _5(yCounts,constellations,data)
   })
   return yCounts
 }
-
-
-function _constellation_c(){return(
-["牡羊座", "金牛座", "雙子座", "巨蟹座", "獅子座", "處女座", "天秤座", "天蠍座", "射手座", "摩羯座" ,"水瓶座", "雙魚座"]
-)}
 
 function _plotData(yCounts,constellation_c){return(
 yCounts.map(item => ({
