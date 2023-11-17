@@ -42,7 +42,7 @@ function _constellation_c(){return(
 function _plotData(yCounts,constellation_c){return(
 yCounts.map(item => ({
   ...item,
-  constellation: constellation_c[item.constellations]
+  constellations: constellation_c[item.constellations]
 }))
 )}
 
