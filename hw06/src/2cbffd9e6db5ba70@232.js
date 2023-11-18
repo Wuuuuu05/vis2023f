@@ -3,11 +3,11 @@ md`#  HW06`
 )}
 
 function _artistpublic(__query,FileAttachment,invalidation){return(
-__query(FileAttachment("artistPublic (1) - artistPublic (1)@1.csv"),{select:{columns:null},from:{table:"artistPublic (1) - artistPublic (1)"},filter:[],sort:[],slice:{from:null,to:null}},invalidation)
+__query(FileAttachment("artistPublic (1) - artistPublic (1).csv"),{select:{columns:null},from:{table:"artistPublic (1) - artistPublic (1)"},filter:[],sort:[],slice:{from:null,to:null}},invalidation)
 )}
 
 function _artistver(__query,FileAttachment,invalidation){return(
-__query(FileAttachment("artistVer (1) - artistVer (1)@1.csv"),{select:{columns:null},from:{table:"artistVer (1) - artistVer (1)"},filter:[],sort:[],slice:{from:null,to:null}},invalidation)
+__query(FileAttachment("artistVer (1) - artistVer (1).csv"),{select:{columns:null},from:{table:"artistVer (1) - artistVer (1)"},filter:[],sort:[],slice:{from:null,to:null}},invalidation)
 )}
 
 function _artist_columnKey(artistver){return(
