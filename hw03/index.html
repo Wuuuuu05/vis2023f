@@ -200,7 +200,7 @@
   </div>
 
   <!-- ------------------------------------------------>
-  <div class="row hw12">
+   <div class="row hw12">
     <div class="col-md-12 twenty">
       <table>
         <tr>
@@ -210,33 +210,77 @@
           <th>分項描述</th>
         </tr>
         <tr>
-          <td rowspan="7" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
-          <td id='m1'>2</td>
-          <td>Simple baseline - 描述、描述、描述</td>
+          <td rowspan="0" id="myTotal"></td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox1" checked></td>
+          <td id='m1'>1</td>
+          <td>Simple baseline-1 - 播放自己的參訪路徑</td>
         </tr>
-        <tr>
+
+         <tr>
           <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
-          <td id='m2'>6</td>
-          <td>Medium baseline - 描述、描述、描述 </td>
+          <td id='m2'>2</td>
+          <td>Simple baseline-2 - 計算自己的移動距離/卡路里</td>
         </tr>
+        
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3"></td>
-          <td id='m3'>2</td>
-          <td>Strong baseline - 描述、描述、描述 </td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked></td>
+          <td id='m3'>3</td>
+          <td>Medium baseline - 美術館樓層平面圖行走軌跡</td>
         </tr>
+        
+        <tr>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox4" checked></td>
+          <td id='m4'>4</td>
+          <td>Strong baseline - 建立課程班上學生居住縣市人數的 Choropleth</td>
+        </tr>
+
       </table>
+    </div>
+  </div>
+  
+<!-- ------------------------------------------------>
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+       <h4>Simple baseline - 播放自己的參訪路徑，並計算自己的移動距離/卡路里</h4>
+    </div>
+  </div>
+  
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+       <iframe width="100%" height="500" frameborder="0" style="background-color: #FFFFFF"
+  src="./src/simple/planar_graph.html"></iframe>  
     </div>
   </div>
 
   <!-- ------------------------------------------------>
+ 
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      <video id="video1" style="width:100%;max-width:100%;" controls="">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
+       <h4>Medium baseline - 美術館樓層平面圖行走軌跡</h4>
     </div>
   </div>
+  
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+      <iframe width="100%" height="500" frameborder="0" style="background-color: #FFFFFF"
+  src="./src/medium/choropleth.html"></iframe>
+    </div>
+  </div>
+  
+  
+  <!-- ------------------------------------------------>
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+       <h4>Strong baseline - 建立課程班上學生居住縣市人數的 Choropleth</h4>
+    </div>
+  </div>
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+      <iframe width="100%" height="500" frameborder="0" style="background-color: #FFFFFF"
+        src="你的URL"></iframe>
+    </div>
+  </div>
+
 
   <!-- ------------------------------------------------>
 
@@ -255,9 +299,6 @@
   d3.select("#myCheckbox2").on("change",update);
   d3.select("#myCheckbox3").on("change",update);
   d3.select("#myCheckbox4").on("change",update);
-  d3.select("#myCheckbox5").on("change",update);
-  d3.select("#myCheckbox6").on("change",update);
-  d3.select("#myCheckbox7").on("change",update);
 
   update();
   
@@ -277,9 +318,14 @@
       score += parseInt(d3.select('#m3').html());   
     }
 
+    if (d3.select("#myCheckbox4").property("checked")){
+      score += parseInt(d3.select('#m4').html());
+    }
+
     d3.select("#myTotal").html(score);    
   }
 </script>
+
 
 </body>
 </html>
